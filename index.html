@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-31j">
+
+<link rel="stylesheet" type="text/css" href="myModal.css" media="all">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="jquery.myModal.js"></script>
+
+<script>
+$(function() {
+
+	/*** プラグインstart ***/
+/*
+	$('.images-area img').click(function() {
+		
+		$('body').append('<div class="overlay"></div>');
+		
+		//$('.overlay').css({display: 'block'});
+		
+		// dialogルート
+		
+		
+		// dispルート
+		// 画像表示領域のCSSを整える
+		var img_height = $(this).height();
+		var img_width  = $(this).width();
+		var img_src    = $(this).attr('src');
+		
+		$('body').append('<div class="dialog"><img src="' + img_src + '"></img></div>');
+		
+		$('.dialog').css({
+			'height': img_height+'px',
+			'width': img_width+'px',
+			'margin-top': '-'+(img_height/2)+'px',
+			'margin-left': '-'+(img_width/2)+'px'
+		}).fadeIn(500);
+	
+	});
+	
+	$('.overlay').live('click', function() {
+	
+		//$('.overlay').css({display: 'none'});
+		$('.overlay').remove();
+		$('.dialog').remove();
+	
+	});
+*/
+	/*** プラグインend ***/
+
+	$('.images-area img').myModal({
+		//trigger: 'hover'
+	});
+	
+	$('.dialog-area').myModal({
+		trigger_element: $('#trigger'),
+		overlay: '#ff9999',
+		overlay_opacity: 0.1
+	});
+
+});
+</script>
+
+<style>
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1000;
+}
+.displaybox {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 1001;
+	display: none;
+}
+
+</style>
+
+</head>
+
+<body>
+<h4>Modal Plugin</h4>
+
+<h5>○ jquery.myModal.js : モーダルプラグイン</h5>
+
+<div class="images-area">
+	<img src="img/01.png" width="100" height="150">
+	<img src="img/02.png" width="100" height="150">
+	<img src="img/03.png" width="100" height="150">
+	<img src="img/04.png" width="100" height="150">
+	<img src="img/05.png" width="100" height="150">
+	<img src="img/06.png" width="100" height="150">
+	<img src="img/07.png" width="100" height="150">
+	
+</div>
+
+<div class="dialog-area" style="width: 250px; height: 150px; background-color: #cccccc">
+	aaaaa<br />
+	bbbbb<br />
+	ccccc<br />
+	ddddd<br />
+	eeeee<br />
+	<form action="#" method="POST">
+		<input type="text" name="hoge">
+		<input type="submit" name="submit" value="送信">
+	</form>
+</div>
+<input type="button" id="trigger" value="ダイアログ表示">
+
+<hr>
+<a href="index_smartphone.html">スマホ向け画面へ</a>
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
