@@ -50,13 +50,15 @@ $(function() {
 	/*** ƒvƒ‰ƒOƒCƒ“end ***/
 
 	$('.images-area img').myModal({
-		//trigger: 'hover'
+		displaybox: '#666666'
 	});
 	
 	$('.dialog-area').myModal({
+		trigger: 'hover',
 		trigger_element: $('#trigger'),
 		overlay: '#ff9999',
-		overlay_opacity: 0.1
+		overlay_opacity: 0.1,
+		displaybox_close: true
 	});
 
 });
@@ -77,6 +79,11 @@ $(function() {
 	left: 50%;
 	z-index: 1001;
 	display: none;
+}
+.modal-close {
+	position: absolute;
+	top: -15px;
+	cursor: pointer;
 }
 
 </style>

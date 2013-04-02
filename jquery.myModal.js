@@ -16,6 +16,8 @@
 			/* 初期化・オプションチェック */
 			/******************************/
 			
+			// TODO:イベントを設定（ダイアログクローズ、オープンのイベントを拾えるようにする）
+			
 			var $modal = $(this);
 			
 			if($modal[0].nodeName == 'IMG') {
@@ -77,15 +79,27 @@
 						//'opacity': opts.displaybax_opacity,
 					}).fadeIn(500);
 				
-				});
-			
-				$('.overlay.modal-image').live('click', function() {
-			
-					//$('.overlay').css({display: 'none'});
-					$(this).remove();
-					$('.displaybox').remove();
+					$('.displaybox').append('<img class="modal-close modal-image" src="images/modal_close_button.png">');
 				
+					$('.modal-close').css({
+						'left': ((img_width + opts.displaybox_padding * 2) - 15) + 'px'
+					});
+					
 				});
+			
+				$('.modal-close.modal-image').live('click', function() {
+					$('.overlay.modal-image').remove();
+					$('.displaybox').remove();
+				});
+			
+				if(opts.displaybox_close) {
+					$('.overlay.modal-image').live('click', function() {
+				
+						$(this).remove();
+						$('.displaybox').remove();
+					
+					});
+				}
 			
 			
 			} else {
@@ -93,6 +107,8 @@
 				$modal.css({'display': 'none'});
 				
 				opts.trigger_element.bind(opts.trigger, function() {
+					
+					//$(this).unbind(opts.trigger);
 					
 					var img_height = $modal.height();
 					var img_width  = $modal.width();
@@ -127,19 +143,16 @@
 				});
 			
 				// TODO:画面外クリックで戻すかどうかの処理
-				/*
-				$('.overlay.modal-dialog').live('click', function() {
-			
-					$(this).remove();
-					
-					$modal.css({'display': 'none'});
-					$modal.unwrap();
-					
-					
-					
+				if(opts.displaybox_close) {
+					$('.overlay.modal-dialog').live('click', function() {
 				
-				});
-				*/
+						$(this).remove();
+						
+						$modal.css({'display': 'none'});
+						$modal.unwrap();
+					
+					});
+				}
 				
 			}
 			
@@ -161,7 +174,8 @@
 		overlay_opacity: 0.5,
 		displaybox: '#FFFFFF',
 		displaybox_opacity: 0.5,
-		displaybox_padding: 20
+		displaybox_padding: 20,
+		displaybox_close: false
 	}
 
 }) (jQuery);
