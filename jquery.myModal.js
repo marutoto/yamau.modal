@@ -82,7 +82,9 @@
 					$('.displaybox').append('<img class="modal-close modal-image" src="images/modal_close_button.png">');
 				
 					$('.modal-close').css({
-						'left': ((img_width + opts.displaybox_padding * 2) - 15) + 'px'
+						'top': '0px',
+						'left': ((img_width + opts.displaybox_padding * 2) - 30) + 'px'
+						//'display': 'none'
 					});
 					
 				});
@@ -100,6 +102,8 @@
 					
 					});
 				}
+				
+				
 			
 			
 			} else {
@@ -161,7 +165,16 @@
 			//i++;
 			
 		});
-
+	
+	/*
+		$('.displaybox').hover(function() {
+			console.log('in');
+			$('.modal-close').fadeIn(1000);
+		}, function() {
+			console.log('out');
+			$('.modal-close').fadeOut(1000);
+		});
+	*/
 		return this;
 
 	}
